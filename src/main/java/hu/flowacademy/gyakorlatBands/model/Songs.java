@@ -19,12 +19,15 @@ public class Songs {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
-    private String title;
+    private String songTitle;
     private double length;
     private int licencePricee;
+    private String onlineProvider;
 
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn
     private Album album;
+
+
 
 }
