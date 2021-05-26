@@ -20,8 +20,8 @@ public class AlbumService {
     }
 
 
-    public Album save(Album album, String id){
-        return albumRepository.save(album.toBuilder().id(id).build());
+    public Album save(Album album){
+        return albumRepository.save(album.toBuilder().build());
     }
 
 

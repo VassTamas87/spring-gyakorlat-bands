@@ -21,7 +21,7 @@ public class Songs {
     private String id;
     private String songTitle;
     private double length;
-    private int licencePricee;
+    private int licencePrice;
     private String onlineProvider;
 
     @ManyToOne (fetch = FetchType.LAZY)

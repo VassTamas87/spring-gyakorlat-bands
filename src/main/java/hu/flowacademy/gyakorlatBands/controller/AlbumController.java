@@ -15,16 +15,16 @@ public class AlbumController {
 
     private final AlbumService albumService;
 
-    @GetMapping("/{id}/albums")
+    @GetMapping("/albums")
     public List<Album> findAll(){
         return albumService.findAll();
     }
 
 
-    @PostMapping("/{id}/albums")
+    @PostMapping("/albums")
     @ResponseStatus(HttpStatus.CREATED)
-    public Album save(@RequestBody Album album, @PathVariable String id) {
-        return albumService.save(album ,id);
+    public Album save(@RequestBody Album album) {
+        return albumService.save(album);
     }
 
 
