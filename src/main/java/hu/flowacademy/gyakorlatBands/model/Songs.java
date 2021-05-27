@@ -1,5 +1,6 @@
 package hu.flowacademy.gyakorlatBands.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,7 +26,8 @@ public class Songs {
     private String onlineProvider;
 
     @ManyToOne (fetch = FetchType.LAZY)
-    @JoinColumn
+    @JoinColumn(name = "album_id")
+    @JsonIgnore
     private Album album;
 
 
