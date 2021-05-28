@@ -17,7 +17,6 @@ public class Provider {
 
     @Id
     @GeneratedValue
-    @Column(name = "album_id")
     private int id;
     private String name;
 }
