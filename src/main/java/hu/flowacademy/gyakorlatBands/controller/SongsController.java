@@ -31,4 +31,11 @@ public class SongsController {
     public Songs save(@RequestBody Songs songs) {
         return songsService.save(songs);
     }
+
+    @GetMapping("/songs/{id}/details")
+    public List<String> findOneWithDetails(@PathVariable int id) {
+        return songsService.findOneWithDetails(id);
+    }
+
+
 }

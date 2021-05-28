@@ -41,4 +41,11 @@ public class AlbumService {
                         .reduce(0.0, Double::sum)).collect(Collectors.toList());
     }
 
+    public List<String> findOneWithDetails(int id) {
+        return albumRepository.findById(id).stream()
+                .map(el -> el.getTitle() + (el.getSongs().stream()
+                        .map(songs -> songs.getId() + " " + songs.getSongTitle() + " " + songs.getLength()))
+                        .collect(Collectors.toList())).collect(Collectors.toList());
+    }
 }
+
