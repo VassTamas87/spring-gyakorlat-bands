@@ -1,13 +1,17 @@
 package hu.flowacademy.gyakorlatBands.service;
 
 import hu.flowacademy.gyakorlatBands.model.Album;
+import hu.flowacademy.gyakorlatBands.model.Band;
+import hu.flowacademy.gyakorlatBands.model.Songs;
 import hu.flowacademy.gyakorlatBands.repository.AlbumRepository;
+import hu.flowacademy.gyakorlatBands.repository.BandsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -15,7 +19,7 @@ import java.util.Optional;
 public class AlbumService {
 
     private final AlbumRepository albumRepository;
-
+    private final BandsRepository bandsRepository;
 
     public List<Album> findAll() {
         return albumRepository.findAll();
@@ -25,8 +29,16 @@ public class AlbumService {
         return albumRepository.save(album);
     }
 
-    public Optional<Album> findOne(String id) {
+    public Optional<Album> findOne(int id) {
         return albumRepository.findById(id);
+    }
+
+    public List<String> findAllAlbumsByBand(String band) {
+        List<Band> temp = bandsRepository.findAll().stream().filter(el -> el.getName().equals(band)).collect(Collectors.toList());
+        return temp.get(0).getAlbums().stream()
+                .map(el -> el.getId() + " " + el.getTitle() + " " + el.getReleaseDate() + " " + el.getSongs()
+                        .stream().map(Songs::getLength)
+                        .reduce(0.0, Double::sum)).collect(Collectors.toList());
     }
 
 }

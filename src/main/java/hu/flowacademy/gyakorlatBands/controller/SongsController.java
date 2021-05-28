@@ -1,8 +1,6 @@
 package hu.flowacademy.gyakorlatBands.controller;
 
-import hu.flowacademy.gyakorlatBands.model.Album;
 import hu.flowacademy.gyakorlatBands.model.Songs;
-import hu.flowacademy.gyakorlatBands.service.AlbumService;
 import hu.flowacademy.gyakorlatBands.service.SongsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,14 +16,13 @@ public class SongsController {
 
     private final SongsService songsService;
 
-
     @GetMapping("/songs")
     public List<Songs> findAll() {
         return songsService.findAll();
     }
 
     @GetMapping("/songs/{id}")
-    final Optional<Songs> findOne(@PathVariable String id) {
+    public Optional<Songs> findOne(@PathVariable int id) {
         return songsService.findOne(id);
     }
 
@@ -34,6 +31,4 @@ public class SongsController {
     public Songs save(@RequestBody Songs songs) {
         return songsService.save(songs);
     }
-
-
 }

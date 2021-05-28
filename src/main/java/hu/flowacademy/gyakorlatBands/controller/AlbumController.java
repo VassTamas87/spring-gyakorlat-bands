@@ -16,14 +16,13 @@ public class AlbumController {
 
     private final AlbumService albumService;
 
-
     @GetMapping("/albums")
     public List<Album> findAll() {
         return albumService.findAll();
     }
 
     @GetMapping("/albums/{id}")
-    final Optional<Album> findOne(@PathVariable String id) {
+    public Optional<Album> findOne(@PathVariable int id) {
         return albumService.findOne(id);
     }
 
@@ -33,5 +32,8 @@ public class AlbumController {
         return albumService.save(album);
     }
 
-
+    @GetMapping("/albums/findallalbums")
+    public List<String> findAllAlbumsByBand(@RequestParam("band") String band) {
+        return albumService.findAllAlbumsByBand(band);
+    }
 }

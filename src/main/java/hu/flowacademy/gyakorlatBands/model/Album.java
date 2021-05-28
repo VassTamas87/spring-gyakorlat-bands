@@ -1,16 +1,11 @@
 package hu.flowacademy.gyakorlatBands.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.text.DateFormat;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -21,19 +16,14 @@ import java.util.List;
 public class Album {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue
     @Column(name = "album_id")
-    private String id;
+    private int id;
     private String title;
     private String releaseDate;
 
-    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+
+    @OneToMany(targetEntity = Songs.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "album_id", referencedColumnName = "album_id")
     private List<Songs> songs;
-
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "band_id")
-    @JsonIgnore
-    private Band band;
 }

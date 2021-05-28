@@ -1,6 +1,5 @@
 package hu.flowacademy.gyakorlatBands.controller;
 
-
 import hu.flowacademy.gyakorlatBands.model.Band;
 import hu.flowacademy.gyakorlatBands.service.BandsService;
 import lombok.RequiredArgsConstructor;
@@ -17,14 +16,13 @@ public class BandsController {
 
     private final BandsService bandsService;
 
-
     @GetMapping("/bands")
     public List<Band> findAll() {
         return bandsService.findAll();
     }
 
     @GetMapping("/bands/{id}")
-    final Optional<Band> findOne(@PathVariable String id) {
+    public Optional<Band> findOne(@PathVariable int id) {
         return bandsService.findOne(id);
     }
 
@@ -34,5 +32,8 @@ public class BandsController {
         return bandsService.save(band);
     }
 
-
+    @GetMapping("/bands/findall")
+    public List<String> findAllWithNamesOnly() {
+        return bandsService.findAllWithNamesOnly();
+    }
 }

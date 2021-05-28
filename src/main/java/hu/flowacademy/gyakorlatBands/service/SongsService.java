@@ -1,8 +1,6 @@
 package hu.flowacademy.gyakorlatBands.service;
 
-import hu.flowacademy.gyakorlatBands.model.Album;
 import hu.flowacademy.gyakorlatBands.model.Songs;
-import hu.flowacademy.gyakorlatBands.repository.AlbumRepository;
 import hu.flowacademy.gyakorlatBands.repository.SongsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +16,6 @@ public class SongsService {
 
     private final SongsRepository songsRepository;
 
-
     public List<Songs> findAll() {
         return songsRepository.findAll();
     }
@@ -27,7 +24,7 @@ public class SongsService {
         return songsRepository.save(songs);
     }
 
-    public Optional<Songs> findOne(String id) {
+    public Optional<Songs> findOne(int id) {
         return songsRepository.findById(id);
     }
 

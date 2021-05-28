@@ -1,12 +1,10 @@
 package hu.flowacademy.gyakorlatBands.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import hu.flowacademy.gyakorlatBands.enumPackage.Genre;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,15 +17,16 @@ import java.util.List;
 public class Band {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue
     @Column(name = "band_id")
-    private String id;
+    private int id;
     private String name;
     @Enumerated(EnumType.STRING)
     private Genre genre;
 
-    @OneToMany(mappedBy = "band", cascade = CascadeType.ALL)
+
+    @OneToMany(targetEntity = Album.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "band_id", referencedColumnName = "band_id")
     private List<Album> albums;
 
 }
