@@ -31,5 +31,4 @@ public class AlbumController {
     public Album save(@RequestBody Album album, @PathVariable int id) {
         return albumService.save(album, id);
     }
-
 }

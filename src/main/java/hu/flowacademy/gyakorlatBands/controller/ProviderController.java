@@ -37,6 +37,4 @@ public class ProviderController {
     public void addSong(@PathVariable Integer id, @RequestParam("songId") Integer songId) {
         providerservice.addSong(id, songId);
     }
-
-
 }

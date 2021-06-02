@@ -36,6 +36,4 @@ public class SongsController {
     public Songs update(@RequestBody Songs song, @PathVariable int id) {
         return songsService.update(song, id);
     }
-
-
 }

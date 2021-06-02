@@ -19,7 +19,6 @@ public class ProviderService {
 
     private final ProviderRepository providerRepository;
     private final SongsRepository songsRepository;
-    private final SongsService songsService;
 
     public List<Provider> findAll() {
         return providerRepository.findAll();
@@ -37,8 +36,5 @@ public class ProviderService {
         Songs temp = songsRepository.findById(songId).orElseThrow();
         Provider temp2 = providerRepository.findById(id).orElseThrow();
         songsRepository.save(temp.toBuilder().id(songId).album(temp.getAlbum()).provider(temp2).build());
-
     }
-
-
 }

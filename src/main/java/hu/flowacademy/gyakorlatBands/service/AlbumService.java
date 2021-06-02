@@ -26,13 +26,10 @@ public class AlbumService {
 
     public Album save(Album album, int id) {
         Band temp = bandsRepository.findById(id).orElseThrow();
-        return albumRepository.save(Album.builder().title(album.getTitle()).releaseDate(album.getReleaseDate()).band(temp).build());
-
+        return albumRepository.save(album.toBuilder().band(temp).build());
     }
 
     public Optional<Album> findOne(int id) {
         return albumRepository.findById(id);
     }
-
-
 }

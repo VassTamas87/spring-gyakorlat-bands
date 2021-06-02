@@ -25,6 +25,4 @@ public class Provider {
     @OneToMany(mappedBy = "provider")
     @JsonIgnore
     private List<Songs> songs;
-
-
 }

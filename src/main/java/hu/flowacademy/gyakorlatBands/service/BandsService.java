@@ -22,12 +22,10 @@ public class BandsService {
     }
 
     public Band save(Band band) {
-        return bandsRepository.save(band.toBuilder().albums(band.getAlbums()).build());
+        return bandsRepository.save(band.toBuilder().build());
     }
 
     public Optional<Band> findOne(int id) {
         return bandsRepository.findById(id);
     }
-
-
 }

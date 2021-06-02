@@ -29,6 +29,4 @@ public class Album {
 
     @OneToMany(mappedBy = "album")
     private List<Songs> songs;
-
-
 }

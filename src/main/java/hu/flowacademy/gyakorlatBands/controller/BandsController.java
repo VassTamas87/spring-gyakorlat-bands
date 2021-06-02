@@ -32,6 +32,4 @@ public class BandsController {
     public Band save(@RequestBody Band band) {
         return bandsService.save(band);
     }
-
-
 }

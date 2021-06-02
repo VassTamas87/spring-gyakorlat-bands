@@ -30,16 +30,11 @@ public class SongsService {
 
     public Songs save(Songs song, int id) {
         Album temp = albumRepository.findById(id).orElseThrow();
-        return songsRepository.save(Songs.builder().songTitle(song.getSongTitle()).length(song.getLength()).licencePrice(song.getLicencePrice()).album(temp).build());
-
+        return songsRepository.save(song.toBuilder().album(temp).build());
     }
 
     public Songs update(Songs song, int id) {
         Songs temp = songsRepository.findById(id).orElseThrow();
         return songsRepository.save(song.toBuilder().id(id).provider(temp.getProvider()).album(temp.getAlbum()).build());
-
-
     }
-
-
 }
