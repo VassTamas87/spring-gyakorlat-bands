@@ -1,5 +1,6 @@
 package hu.flowacademy.gyakorlatBands.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,13 +18,17 @@ public class Album {
 
     @Id
     @GeneratedValue
-    @Column(name = "album_id")
     private int id;
     private String title;
     private String releaseDate;
 
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnore
+    private Band band;
 
-    @OneToMany(targetEntity = Songs.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "album_id", referencedColumnName = "album_id")
+    @OneToMany(mappedBy = "album")
     private List<Songs> songs;
+
+
 }

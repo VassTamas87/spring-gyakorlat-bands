@@ -1,6 +1,6 @@
 package hu.flowacademy.gyakorlatBands.service;
 
-import hu.flowacademy.gyakorlatBands.model.Provider;
+
 import hu.flowacademy.gyakorlatBands.model.Songs;
 import hu.flowacademy.gyakorlatBands.repository.SongsRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 @Transactional
@@ -30,10 +30,5 @@ public class SongsService {
         return songsRepository.findById(id);
     }
 
-    public List<String> findOneWithDetails(int id) {
-        return songsRepository.findById(id).stream()
-                .map(el -> el.getSongTitle() + " " + el.getLength() + " " + el.getLicencePrice() + " " + el.getProviders()
-                        .stream().map(Provider::getName).collect(Collectors.toList())).collect(Collectors.toList());
-    }
 
 }

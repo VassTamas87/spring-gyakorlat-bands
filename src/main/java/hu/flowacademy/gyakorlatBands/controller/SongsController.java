@@ -32,10 +32,5 @@ public class SongsController {
         return songsService.save(songs);
     }
 
-    @GetMapping("/songs/{id}/details")
-    public List<String> findOneWithDetails(@PathVariable int id) {
-        return songsService.findOneWithDetails(id);
-    }
-
 
 }

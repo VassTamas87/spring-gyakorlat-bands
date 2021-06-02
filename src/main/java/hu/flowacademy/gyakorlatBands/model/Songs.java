@@ -1,5 +1,6 @@
 package hu.flowacademy.gyakorlatBands.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,10 +24,14 @@ public class Songs {
     private double length;
     private int licencePrice;
 
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnore
+    private Album album;
 
-    @OneToMany(targetEntity = Provider.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "song_id", referencedColumnName = "song_id")
-    private List<Provider> providers;
+    @ManyToOne
+    @JoinColumn
+    private Provider provider;
 
 
 }

@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 @Transactional
@@ -27,12 +27,6 @@ public class BandsService {
 
     public Optional<Band> findOne(int id) {
         return bandsRepository.findById(id);
-    }
-
-    public List<String> findAllWithNamesOnly() {
-        return bandsRepository.findAll().stream()
-                .map(el -> el.getId() + " " + el.getName())
-                .collect(Collectors.toList());
     }
 
 
