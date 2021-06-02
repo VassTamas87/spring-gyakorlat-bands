@@ -28,8 +28,8 @@ public class AlbumController {
 
     @PostMapping("/albums")
     @ResponseStatus(HttpStatus.CREATED)
-    public Album save(@RequestBody Album album) {
-        return albumService.save(album);
+    public Album save(@RequestBody Album album, @RequestParam int id) {
+        return albumService.save(album, id);
     }
 
 }

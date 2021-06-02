@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Data
 @Builder(toBuilder = true)
@@ -18,7 +18,6 @@ public class Songs {
 
     @Id
     @GeneratedValue
-    @Column(name = "song_id")
     private int id;
     private String songTitle;
     private double length;
