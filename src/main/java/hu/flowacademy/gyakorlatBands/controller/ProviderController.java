@@ -1,7 +1,6 @@
 package hu.flowacademy.gyakorlatBands.controller;
 
 import hu.flowacademy.gyakorlatBands.model.Provider;
-
 import hu.flowacademy.gyakorlatBands.service.ProviderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,6 +31,11 @@ public class ProviderController {
     @ResponseStatus(HttpStatus.CREATED)
     public Provider save(@RequestBody Provider provider) {
         return providerservice.save(provider);
+    }
+
+    @PutMapping("/providers/add/{id}")
+    public void addSong(@PathVariable Integer id, @RequestParam("songId") Integer songId) {
+        providerservice.addSong(id, songId);
     }
 
 

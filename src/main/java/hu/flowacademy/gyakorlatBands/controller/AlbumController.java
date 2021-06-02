@@ -26,9 +26,9 @@ public class AlbumController {
         return albumService.findOne(id);
     }
 
-    @PostMapping("/albums")
+    @PostMapping("/albums/add/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Album save(@RequestBody Album album, @RequestParam int id) {
+    public Album save(@RequestBody Album album, @PathVariable int id) {
         return albumService.save(album, id);
     }
 

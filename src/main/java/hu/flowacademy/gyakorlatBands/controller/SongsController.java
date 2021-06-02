@@ -26,10 +26,15 @@ public class SongsController {
         return songsService.findOne(id);
     }
 
-    @PostMapping("/songs")
+    @PostMapping("/songs/add/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Songs save(@RequestBody Songs songs) {
-        return songsService.save(songs);
+    public Songs save(@RequestBody Songs song, @PathVariable int id) {
+        return songsService.save(song, id);
+    }
+
+    @PutMapping("/songs/{id}")
+    public Songs update(@RequestBody Songs song, @PathVariable int id) {
+        return songsService.update(song, id);
     }
 
 
