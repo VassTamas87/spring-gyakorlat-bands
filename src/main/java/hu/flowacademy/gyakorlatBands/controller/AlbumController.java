@@ -1,6 +1,7 @@
 package hu.flowacademy.gyakorlatBands.controller;
 
 import hu.flowacademy.gyakorlatBands.model.Album;
+import hu.flowacademy.gyakorlatBands.model.dto.AlbumDto;
 import hu.flowacademy.gyakorlatBands.service.AlbumService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,5 +31,10 @@ public class AlbumController {
     @ResponseStatus(HttpStatus.CREATED)
     public Album save(@RequestBody Album album, @PathVariable int id) {
         return albumService.save(album, id);
+    }
+
+    @GetMapping("/albums/details/{id}")
+    public List<AlbumDto> findAllWithDetails(@PathVariable int id) {
+        return albumService.findAllWithDetails(id);
     }
 }

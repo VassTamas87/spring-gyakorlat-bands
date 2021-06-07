@@ -2,6 +2,7 @@ package hu.flowacademy.gyakorlatBands.controller;
 
 
 import hu.flowacademy.gyakorlatBands.model.Band;
+import hu.flowacademy.gyakorlatBands.model.dto.BandDto;
 import hu.flowacademy.gyakorlatBands.service.BandsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,4 +33,11 @@ public class BandsController {
     public Band save(@RequestBody Band band) {
         return bandsService.save(band);
     }
+
+    @GetMapping("/bands/listall")
+    public List<BandDto> listAll() {
+        return bandsService.listAll();
+    }
+
 }
+

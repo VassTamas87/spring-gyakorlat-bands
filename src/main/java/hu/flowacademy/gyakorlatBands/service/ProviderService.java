@@ -35,6 +35,7 @@ public class ProviderService {
     public void addSong(Integer id, Integer songId) {
         Songs temp = songsRepository.findById(songId).orElseThrow();
         Provider temp2 = providerRepository.findById(id).orElseThrow();
+
         songsRepository.save(temp.toBuilder().id(songId).album(temp.getAlbum()).provider(temp2).build());
     }
 }

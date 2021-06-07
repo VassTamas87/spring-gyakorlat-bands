@@ -33,7 +33,7 @@ public class ProviderController {
         return providerservice.save(provider);
     }
 
-    @PutMapping("/providers/add/{id}")
+    @PostMapping("/providers/add/{id}")
     public void addSong(@PathVariable Integer id, @RequestParam("songId") Integer songId) {
         providerservice.addSong(id, songId);
     }

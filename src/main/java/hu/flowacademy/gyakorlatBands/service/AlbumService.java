@@ -2,6 +2,8 @@ package hu.flowacademy.gyakorlatBands.service;
 
 import hu.flowacademy.gyakorlatBands.model.Album;
 import hu.flowacademy.gyakorlatBands.model.Band;
+import hu.flowacademy.gyakorlatBands.model.Songs;
+import hu.flowacademy.gyakorlatBands.model.dto.AlbumDto;
 import hu.flowacademy.gyakorlatBands.repository.AlbumRepository;
 import hu.flowacademy.gyakorlatBands.repository.BandsRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -31,5 +34,16 @@ public class AlbumService {
 
     public Optional<Album> findOne(int id) {
         return albumRepository.findById(id);
+    }
+
+    public List<AlbumDto> findAllWithDetails(int id) {
+        List<Album> temp = albumRepository.findByBandId(id);
+        return temp.stream().map(el -> new AlbumDto().builder()
+                .id(el.getId()).title(el.getTitle())
+                .releaseDate(el.getReleaseDate())
+                .length(el.getSongs().stream()
+                        .map(Songs::getLength)
+                        .reduce(0.0, Double::sum))
+                .build()).collect(Collectors.toList());
     }
 }
