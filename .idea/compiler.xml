@@ -16,7 +16,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="gyakorlatBands" options="-parameters" />
+      <module name="gyakorlatBands" options="-parameters --add-exports jdk.internal.vm.compiler/jdk.internal.vm.compiler.word=ALL-UNNAMED" />
     </option>
   </component>
 </project>

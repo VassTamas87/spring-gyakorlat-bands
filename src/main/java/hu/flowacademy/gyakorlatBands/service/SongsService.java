@@ -37,4 +37,8 @@ public class SongsService {
         Songs temp = songsRepository.findById(id).orElseThrow();
         return songsRepository.save(song.toBuilder().id(id).provider(temp.getProvider()).album(temp.getAlbum()).build());
     }
+
+    public void delete(int id) {
+        songsRepository.deleteById(id);
+    }
 }

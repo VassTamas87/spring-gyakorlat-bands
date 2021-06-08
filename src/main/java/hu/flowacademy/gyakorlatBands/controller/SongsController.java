@@ -4,6 +4,7 @@ import hu.flowacademy.gyakorlatBands.model.Songs;
 import hu.flowacademy.gyakorlatBands.service.SongsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,4 +37,24 @@ public class SongsController {
     public Songs update(@RequestBody Songs song, @PathVariable int id) {
         return songsService.update(song, id);
     }
+
+    @DeleteMapping("/songs/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        songsService.delete(id);
+        return ResponseEntity.accepted().build();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

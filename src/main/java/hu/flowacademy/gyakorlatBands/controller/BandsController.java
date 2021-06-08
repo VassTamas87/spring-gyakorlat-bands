@@ -38,6 +38,5 @@ public class BandsController {
     public List<BandDto> listAll() {
         return bandsService.listAll();
     }
-
 }
 
